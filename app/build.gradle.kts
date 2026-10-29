@@ -7,6 +7,7 @@ plugins {
 android {
     namespace = "com.freeman.app"
     compileSdk = 36
+
     defaultConfig {
         applicationId = "com.freeman.app"
         minSdk = 26
@@ -21,7 +22,19 @@ kotlinOptions {
     jvmTarget = "17"
 }
     }
-    buildFeatures { compose = true }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {

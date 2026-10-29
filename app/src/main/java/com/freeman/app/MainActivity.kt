@@ -12,6 +12,11 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -40,6 +45,7 @@ fun FreeManApp() {
             bottomBar = { NavigationBar { NavigationBarItem(selected = selectedTab == 0, onClick = { selectedTab = 0 }, icon = { Text("✍") }, label = { Text("مشروع") }); NavigationBarItem(selected = selectedTab == 1, onClick = { selectedTab = 1 }, icon = { Text("🎙") }, label = { Text("الأصوات") }); NavigationBarItem(selected = selectedTab == 2, onClick = { selectedTab = 2 }, icon = { Text("⚙") }, label = { Text("الخدمات") }) } }) { pad ->
             when (selectedTab) {
                 0 -> LazyColumn(Modifier.fillMaxSize().padding(pad).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    item { Image(painter = painterResource(id = R.drawable.freeman_home), contentDescription = "صورة واجهة Free Man", modifier = Modifier.fillMaxWidth().height(200.dp).clip(RoundedCornerShape(20.dp)), contentScale = ContentScale.Crop) }
                     item { Text("اصنع قصتك من الفكرة إلى المشاهد", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold) }
                     item { OutlinedTextField(title, { title = it }, Modifier.fillMaxWidth(), label = { Text("عنوان الفيلم") }, singleLine = true) }
                     item { OutlinedTextField(idea, { idea = it }, Modifier.fillMaxWidth().height(130.dp), label = { Text("اكتب فكرة القصة باللهجة أو بالفصحى") }) }
